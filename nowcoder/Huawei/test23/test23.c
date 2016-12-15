@@ -1,6 +1,5 @@
 #include <iostream>
 #include <vector>
-#include <set>
 #include <iterator>
 #include <string>
 #include <algorithm>
@@ -20,9 +19,23 @@ int main()
 	}
 	string query;
 	cin >> query;
+	string queryStr = query;
+	sort(queryStr.begin(), queryStr.end());
+	string temp;
+	vector<string> res;
+	for (vector<string>::iterator it = vect.begin(); it != vect.end(); ++it)
+	{
+	    temp = *it;
+	    sort(temp.begin(), temp.end());
+	    if (temp == queryStr && *it != query)
+		res.push_back(*it);
+	}
+	sort(res.begin(), res.end());
+        cout << res.size() << endl;
 	int index;
 	cin >> index;
-	set<string> allbro;
+	if (index <= res.size())
+	    cout << res[index - 1] << endl;
 	
     }
 
